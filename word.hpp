@@ -3,13 +3,13 @@
 
 #include <cstdint>
 #include <string>
-#include "letter.hpp"
 
 
 class Word
 {
 private:
     std::string _word;
+    Word & operator++();
 
 public:
     Word();
