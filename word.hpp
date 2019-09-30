@@ -14,10 +14,13 @@ private:
 
 
 public:
-    Word() = delete;
+    Word();
     Word(std::string s);
     Word(char * c);
-    Word & operator++(int);
+    Word(Word & w);
+
+    Word & operator++(); 
+    Word operator++(int); // pre-increment
 
     friend std::ostream & operator<<(std::ostream & os, const Word & obj)
     {

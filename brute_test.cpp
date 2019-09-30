@@ -1,26 +1,15 @@
-#include <cstdint>
-#include <string>
-
-char dico[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-                'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-
-uint8_t dico_size = 26;
+#include <iostream>
+#include "word.hpp"
 
 int main(int argc, char const *argv[])
 {
-    std::string mdp = "salut";
+    Word * mot = new Word();
 
-    bool found = false;
-
-    while (!found)
+    for (size_t i = 0; i < 100; ++i)
     {
-        for (size_t i = 0; i < dico_size; i++)
-        {
-            if (mdp[i] == 1) {
-                /* code */
-            }
-        }
+        std::cout << (*mot)++ << std::endl;
     }
 
+    delete mot;
     return 0;
 }

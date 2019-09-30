@@ -1,5 +1,10 @@
 #include "word.hpp"
 
+Word::Word() : _word("0")
+{
+
+}
+
 Word::Word(std::string s) : _word(s)
 {
 
@@ -10,7 +15,12 @@ Word::Word(char * c) : _word(c)
 
 }
 
-Word & Word::operator++(int amount)
+Word::Word(Word & w) : _word(w._word)
+{
+
+}
+
+Word & Word::operator++()
 {
     /*      SI :
     -/ '0' <= c < '9'       |       48 <= c < 57
@@ -37,7 +47,12 @@ Word & Word::operator++(int amount)
         for (size_t i = 0; i < _word.length();)
         {
             _word.rbegin()[i] = _bornes[0];
-            if (_word.rbegin()[++i] != _bornes[5])
+            if (i == _word.length()-1)
+            {
+                _word.insert(0, 1, '0');
+                break;
+            }
+            else if (_word.rbegin()[++i] != _bornes[5])
             {
                 if ((_word.rbegin()[i] >= _bornes[0] && _word.rbegin()[i] < _bornes[1])
                     || (_word.rbegin()[i] >= _bornes[2] && _word.rbegin()[i] < _bornes[3])
@@ -59,6 +74,12 @@ Word & Word::operator++(int amount)
         }
     }
 
-
     return *this;
+}
+
+Word Word::operator++(int amount)
+{
+    Word tmp(*this);
+    operator++();
+    return tmp;
 }
