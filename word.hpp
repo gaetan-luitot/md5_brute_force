@@ -14,7 +14,9 @@ private:
 
 
 public:
-    Word();
+    Word() = delete;
+    Word(std::string s);
+    Word(char * c);
     Word & operator++(int);
 
     friend std::ostream & operator<<(std::ostream & os, const Word & obj)
