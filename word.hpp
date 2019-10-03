@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+#include "utilities.hpp"
+
 static uint8_t _bornes[] = {48, 57, 65, 90, 97, 122};
 
 class Word
@@ -14,15 +16,19 @@ private:
 
 
 public:
+	//Constructeur----------------------------------------------------------------
     Word();
+	//getteurs / setteurs---------------------------------------------------------
+	inline std::string getString() { return _word; } const
+	//Opérator--------------------------------------------------------------------
     Word & operator++(int);
 
     friend std::ostream & operator<<(std::ostream & os, const Word & obj)
     {
         return os << obj._word;
     }
+
+		inline std::string calcMd5() { return cpp_md5sum(getString()); }
 };
-
-
 
 #endif /* end of include guard: WORD_HPP */
