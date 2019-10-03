@@ -4,3 +4,4 @@
 mainTest.cpp
 *.exe
 *.o
+main

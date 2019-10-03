@@ -4,9 +4,13 @@
 int main(int argc, char const *argv[])
 {
 
-    Word mot;
+    if (argc > 1)
+    {
+        Word mot(argv[1]);
+        mot++;
+        std::cout << "---> " << mot << std::endl;
+    }
 
-    mot++;
 
     /*
     for (size_t i = 0; i < 50; i++)

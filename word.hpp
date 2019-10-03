@@ -18,10 +18,14 @@ private:
 public:
 	//Constructeur----------------------------------------------------------------
     Word();
-	//getteurs / setteurs---------------------------------------------------------
-	inline std::string getString() { return _word; } const
-	//Opérator--------------------------------------------------------------------
-    Word & operator++(int);
+    Word(std::string s);
+    Word(char * c);
+    Word(Word & w);
+
+    Word & operator++();
+    Word operator++(int); // pre-increment
+
+		inline std::string getString() { return _word; } const
 
     friend std::ostream & operator<<(std::ostream & os, const Word & obj)
     {
