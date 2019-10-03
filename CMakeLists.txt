@@ -19,6 +19,11 @@ set(HEADERS
 )
 
 add_executable(bruteForce ${HEADERS} ${SRCS})
-target_compile_options(imageEditor PUBLIC "-Wall")
+target_compile_options(bruteForce PUBLIC "-Wall")
 
-#My libs
+#openssl lib
+find_package(OpenSSL)
+include_directories(${OPENSSL_INCLUDE_DIR})
+
+#link
+target_link_libraries(bruteForce crypto)

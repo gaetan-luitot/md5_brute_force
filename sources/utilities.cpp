@@ -17,5 +17,5 @@ for(long long c : md5Print)
 }
 
 	//On renvoie un string généré à l'aide de notre c_str.
-	return std::string((char*)(md5Print));
+	return sout.str();
 }
