@@ -1,5 +1,5 @@
 #include <iostream>
-#include "word.hpp"
+#include "../headers/word.hpp"
 
 int main(int argc, char const *argv[])
 {

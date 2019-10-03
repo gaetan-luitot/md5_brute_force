@@ -1,4 +1,4 @@
-#include "word.hpp"
+#include "../headers/word.hpp"
 
 Word::Word() : _word("0")
 {
