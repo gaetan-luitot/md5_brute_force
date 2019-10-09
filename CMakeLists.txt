@@ -8,7 +8,7 @@ set(CMAKE_CXX_FLAGS "-std=c++17")
 
 #Project
 set(SRCS
-	"sources/mainTest.cpp"
+	"sources/brute_test.cpp"
 	"sources/utilities.cpp"
 	"sources/word.cpp"
 )
