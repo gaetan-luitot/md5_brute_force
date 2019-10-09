@@ -27,7 +27,7 @@ public:
     Word & operator++();
     Word operator++(int); // pre-increment
 
-	inline std::string getString() const { return _word; }
+		inline std::string getString() const { return _word; }
 
     friend std::ostream & operator<<(std::ostream & os, Word const & obj)
     {

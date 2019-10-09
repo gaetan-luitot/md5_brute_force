@@ -1,4 +1,4 @@
-#include "word.hpp"
+#include "../headers/word.hpp"
 #include <iostream>
 
 int main(int argc, char const *argv[])

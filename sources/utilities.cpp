@@ -1,4 +1,4 @@
-#include "utilities.hpp"
+#include "../headers/utilities.hpp"
 
 std::string cpp_md5sum(std::string word) {
 	//On créer un tableau de char qui fait la longueur d'une empreinte md5.

@@ -1,4 +1,4 @@
-#include "word.hpp"
+#include "../headers/word.hpp"
 
 
 
