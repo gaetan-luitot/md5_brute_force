@@ -3,9 +3,9 @@
 
 #include <cstdint>
 #include <pthread.h>
+#include <string>
 #include "word.hpp"
 #include "utilities.hpp"
-#include <string>
 
 struct data
 {
@@ -36,7 +36,7 @@ public:
     ~ThreadManager();
     pthread_t * at(uint16_t i) const;
     void startThread(uint16_t i);
-    // void stopAllThreads() const; 
+    // void stopAllThreads() const;
     bool getFirstWaitingThread(uint16_t & res) const;
     inline bool resultFound() const { return _resultFound; };
     inline Word getResult() { return _result; };

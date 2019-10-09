@@ -1,5 +1,5 @@
-#include "thread_manager.hpp"
-#include "word.hpp"
+#include "../headers/thread_manager.hpp"
+#include "../headers/word.hpp"
 #include <stdexcept>
 #include <iostream>
 

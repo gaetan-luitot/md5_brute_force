@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 
-#include "word.hpp"
-#include "thread_manager.hpp"
+#include "../headers/word.hpp"
+#include "../headers/thread_manager.hpp"
 
 // THREADS :
 #include <pthread.h>
