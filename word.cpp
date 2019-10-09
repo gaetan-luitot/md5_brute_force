@@ -1,5 +1,7 @@
 #include "word.hpp"
 
+
+
 Word::Word() : _word("0")
 {
 
@@ -18,6 +20,86 @@ Word::Word(char * c) : _word(c)
 Word::Word(Word & w) : _word(w._word)
 {
 
+}
+
+std::string decimal2string(__uint128_t value )
+{
+    __uint128_t tmp = value;
+    char buffer[128];
+    char* d = std::end(buffer);
+    do
+    {
+        --d;
+        *d = ("0123456789"[ tmp % 10 ]);
+        tmp /= 10;
+    } while ( tmp != 0 );
+
+    int len = std::end( buffer ) - d;
+
+    return std::string(d, len);
+}
+
+char int2char(int number)
+{
+    if (number < -1 || number > 62)
+        throw std::out_of_range("int2char() -> The given argument is too big or negativ. Tips -> [0;62].");
+
+    if (number == -1)
+    {
+        return char('z');
+    }
+    else if (number >= 0 && number <= 9)
+    {
+        return char(number+48);
+    }
+    else if (number >= 10 && number <= 35)
+    {
+        return char(number+55);
+    }
+    else
+    {
+        return char(number+61);
+    }
+}
+
+Word::Word(__uint128_t i) : _word("0")
+{
+    if ( i > 62)
+    {
+        uint64_t tmp = 0;
+
+        __uint128_t divided = i;
+        size_t length = 0;
+        
+        uint16_t * rest = new uint16_t[40];
+
+        for (; divided > 62; ++length)
+        {
+            tmp = divided / 62;
+            rest[length] = divided % 62;
+            divided = tmp;
+        }
+
+
+        char * new_word = new char[length];
+
+        // Première lettre :
+        new_word[0] = int2char(divided-1);
+        // Lettre jusqu'a n-1 :
+        for (size_t i = 1; i < length; i++)
+        {
+            new_word[i] = int2char(rest[length - i]-1);
+        }
+        // Lettre n :
+        new_word[length] = int2char(rest[0]);
+
+        _word = std::string(new_word, length+1);
+
+        delete [] new_word;
+        delete [] rest;
+    }
+    else
+        _word = std::string(int2char((uint64_t)i), 1);
 }
 
 Word & Word::operator++()

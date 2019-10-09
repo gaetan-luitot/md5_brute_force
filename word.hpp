@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
 #include "utilities.hpp"
 
@@ -21,6 +22,7 @@ public:
     Word(std::string s);
     Word(char * c);
     Word(Word & w);
+    Word(__uint128_t i);
 
     Word & operator++();
     Word operator++(int); // pre-increment
@@ -32,7 +34,9 @@ public:
         return os << obj.getString();
     }
 
-		inline std::string calcMd5() { return cpp_md5sum(getString()); }
+	inline std::string calcMd5() { return cpp_md5sum(getString()); }
+
+    static inline uint8_t * getBornes() { return _bornes; }
 };
 
 #endif /* end of include guard: WORD_HPP */
