@@ -29,7 +29,7 @@ void * func(void * arg)
 
 ThreadManager::ThreadManager(uint16_t nb_thread, std::string md5, uint64_t nb_turns)
 : _nb_thread(nb_thread), _nb_turns(nb_turns), _threads(nullptr) ,_thread_data(nullptr),
-_current_max_search(0), _result('0'), _resultFound(false), _md5(md5)
+_current_max_search(0), _result((int)0), _resultFound(false), _md5(md5)
 {
     _threads = new pthread_t[_nb_thread];
     _thread_data = new data[_nb_thread];

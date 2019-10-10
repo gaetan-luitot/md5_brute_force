@@ -62,6 +62,21 @@ char int2char(int number)
     }
 }
 
+char * int2charE(int number)
+{
+    if (number < -1 || number > 99)
+        throw std::out_of_range("int2char() -> The given argument is too big or negativ. Tips -> [0;62].");
+
+    if (number < 10)
+    {
+        return new char(number+48);
+    }
+    else
+    {
+        return new char[2] {char((int)number/10+48), char((int)number%10+48) };
+    }
+}
+
 Word::Word(__uint128_t i) : _word("0")
 {
     if ( i > 62)
@@ -70,7 +85,7 @@ Word::Word(__uint128_t i) : _word("0")
 
         __uint128_t divided = i;
         size_t length = 0;
-        
+
         uint16_t * rest = new uint16_t[40];
 
         for (; divided > 62; ++length)
@@ -99,7 +114,13 @@ Word::Word(__uint128_t i) : _word("0")
         delete [] rest;
     }
     else
-        _word = std::string(int2char((uint64_t)i), 1);
+    {
+
+        char * tmp = int2charE(i);
+        _word = std::string(tmp, i > 9?2:1);
+        delete [] tmp;
+    }
+
 }
 
 Word & Word::operator++()
