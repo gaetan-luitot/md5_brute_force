@@ -2,19 +2,27 @@
 
 dictionnaire=$1
 maxThread=$2
-rapport="rapport.txt"#Le fichier dans lequel on sort le rapport
+
+#Le fichier dans lequel on sort le rapport
+rapport=`echo "rapport.txt"`
+
 #On vérifie qu'il y ai un diccionnaire a disposition
-if test -d $dictionnaire
+if [ -f $dictionnaire ]
 then
 	#On boucle dans le dico
 	while read line
 	do
-		i = 0
+		echo $line
+		#On calcul le md5 du mot pris dans le dictionnaire
+		md5Print=`echo $line | md5sum | cut -d " " -f1`
+		i=1
 		#Une boucle qui va augmenter le nombre de thread
-		while [$i -l $maxThread]
+		while [ $i -le $maxThread ]
 		do
-			exec '$rapport < time ./bruteForce $i $line'
+			{ time ./bruteForce $i $md5Print; } 2>> rapport.txt
 			((i++))
 		done
 	done < $dictionnaire
+else
+	echo "Le dictionnaire $dictionnaire n'existe pas"
 fi
