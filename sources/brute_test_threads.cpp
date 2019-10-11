@@ -47,11 +47,11 @@ int main(int argc, char const *argv[])
         return 1;
     }
 
-    if (nb_thread % 4 != 0)
+    /*if (nb_thread % 4 != 0)
     {
         std::cerr << "Le nombre de threads doit être un multiple de 4." << std::endl;
         //return 1;
-    }
+    }*/
 
 
     // - - - - - - - - - - - - - - - - - - - - - - - -
